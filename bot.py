@@ -173,8 +173,6 @@ async def on_message(message):
         await message.channel.send('halo ganteng')
     if message.content.endswith('le'):
         await message.channel.send(file=discord.File('C:/Users/Carlos/Desktop/UTY/le.png'))
-    # if message.content.startswith('le'):
-    #     await message.channel.send(file=discord.File('C:/Users/Carlos/Desktop/UTY/le.png'))
     if message.content.startswith('gimana le'):
         await message.channel.send('hisapkan dulu le')
 
@@ -290,8 +288,7 @@ async def play_music(voice_channel, query, feedback_channel):
         'noplaylist': True,
         'default_search': 'ytsearch',
         'quiet': True,
-        'cookiefile': 'SID=g.a000twhngFyAPJ_nQqg-ce-glrlKoTmHAjXYuSTuO-zktHMgU_-PQ7EELFh-3VzfaqaBLGbFSAACgYKAZgSARQSFQHGX2Mih5K5Dk_usSVlDmYjjRsRZxoVAUF8yKpxVmO1AKHZ7bG1Tw-851690076',  # Directly use the cookie value
-    ',  # Path to your cookies file
+        'cookies': 'SID=g.a000twhngFyAPJ_nQqg-ce-glrlKoTmHAjXYuSTuO-zktHMgU_-PQ7EELFh-3VzfaqaBLGbFSAACgYKAZgSARQSFQHGX2Mih5K5Dk_usSVlDmYjjRsRZxoVAUF8yKpxVmO1AKHZ7bG1Tw-851690076',  # Directly use the cookie value
     }
     ffmpeg_options = {
         'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
@@ -371,7 +368,7 @@ async def fetch_and_send_lyrics(title, feedback_channel):
             await feedback_channel.send(f"Could not find lyrics for {title}.")
     except Exception as e:
         logging.error(f"Error fetching lyrics: {str(e)}")
-        await feedback_channel.send(f"Could not fetch lyrics: {str(e)}")
+        await feedback_channel,send(f"Could not fetch lyrics: {str(e)}")
 
 async def download_image(url, save_path):
     try:
