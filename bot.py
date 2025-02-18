@@ -171,8 +171,7 @@ async def on_message(message):
         await message.channel.send('aku nak makan pempek la')
     if message.content.startswith('!carlos'):
         await message.channel.send('halo ganteng')
-    if message.content.endswith('le'):
-        await message.channel.send(file=discord.File(os.path.join(os.getcwd(), 'le.png')))
+    
     if message.content.startswith('gimana le'):
         await message.channel.send('hisapkan dulu le')
 
