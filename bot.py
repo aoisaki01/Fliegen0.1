@@ -172,7 +172,7 @@ async def on_message(message):
     if message.content.startswith('!carlos'):
         await message.channel.send('halo ganteng')
     if message.content.endswith('le'):
-        await message.channel.send(file=discord.File('C:/Users/Carlos/Desktop/UTY/le.png'))
+        await message.channel.send(file=discord.File(os.path.join(os.getcwd(), 'le.png')))
     if message.content.startswith('gimana le'):
         await message.channel.send('hisapkan dulu le')
 
@@ -181,10 +181,10 @@ async def on_message(message):
         if not url:
             await message.channel.send('habis simpankanle masukkan url gambar le. ')
             return
-        await download_image(url, 'C:/Users/Carlos/Desktop/UTY')
+        save_path = os.getcwd()  # Save in the current working directory
+        await download_image(url, save_path)
         await message.channel.send(f'udah tak savein le. mau dikasih nama apa le.')
-        pending_prompts[message.author.id] = os.path.join(os.getcwd(), os.path.basename(url))
-
+        pending_prompts[message.author.id] = os.path.join(save_path, os.path.basename(url))
 
     if message.content.startswith('!kasihnama'):
         if message.author.id in pending_prompts:
@@ -369,7 +369,7 @@ async def fetch_and_send_lyrics(title, feedback_channel):
             await feedback_channel.send(f"Could not find lyrics for {title}.")
     except Exception as e:
         logging.error(f"Error fetching lyrics: {str(e)}")
-        await feedback_channel,send(f"Could not fetch lyrics: {str(e)}")
+        await feedback_channel.send(f"Could not fetch lyrics: {str(e)}")
 
 async def download_image(url, save_path):
     try:
@@ -385,6 +385,7 @@ async def download_image(url, save_path):
                     logging.error(f"Failed to download image. Status code: {response.status}")
     except Exception as e:
         logging.error(f"Error downloading image: {str(e)}")
+
 
 def get_gemini_response(query):
     try:
