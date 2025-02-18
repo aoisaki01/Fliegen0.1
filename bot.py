@@ -290,6 +290,7 @@ async def play_music(voice_channel, query, feedback_channel):
         'noplaylist': True,
         'default_search': 'ytsearch',
         'quiet': True,
+        'cookiefile': 'cookies.txt',  # Path to your cookies file
     }
     ffmpeg_options = {
         'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
