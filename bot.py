@@ -13,7 +13,7 @@ from spotipy.oauth2 import SpotifyClientCredentials
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 
-DISCORD_API_KEY = 'MTM0MDg2ODM0NTMwOTk1NDE2Mg.GjFJBB.xB0Y1sD0oq6aSSFBSTY03YS24Inf7kPqRI5O_U'
+DISCORD_API_KEY = 'MTM0MDg2ODM0NTMwOTk1NDE2Mg.GwLx5p.uzuVjL6Yf44U5smeSthn1ieIcxknVcJ41BvUBw'
 GEMINI_API_KEY = 'AIzaSyC_PTetZI__yBpHNDLnkgHCRp9bpaa8wzM'
 SPOTIPY_CLIENT_ID = 'your_spotify_client_id'  # Replace with your actual Client ID
 SPOTIPY_CLIENT_SECRET = 'your_spotify_client_secret'  # Replace with your actual Client Secret
@@ -183,7 +183,8 @@ async def on_message(message):
             return
         await download_image(url, 'C:/Users/Carlos/Desktop/UTY')
         await message.channel.send(f'udah tak savein le. mau dikasih nama apa le.')
-        pending_prompts[message.author.id] = os.path.join('C:/Users/Carlos/Desktop/UTY', os.path.basename(url))
+        pending_prompts[message.author.id] = os.path.join(os.getcwd(), os.path.basename(url))
+
 
     if message.content.startswith('!kasihnama'):
         if message.author.id in pending_prompts:
