@@ -13,10 +13,10 @@ from spotipy.oauth2 import SpotifyClientCredentials
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 
-DISCORD_API_KEY = 'MTM0MDg2ODM0NTMwOTk1NDE2Mg.Gke4jr.H0za3M159pRjHYmV5aRXs1SO8eSHCiurkvXjio'
-GEMINI_API_KEY = 'AIzaSyC_PTetZI__yBpHNDLnkgHCRp9bpaa8wzM'
-SPOTIPY_CLIENT_ID = 'your_spotify_client_id'  # Replace with your actual Client ID
-SPOTIPY_CLIENT_SECRET = 'your_spotify_client_secret'  # Replace with your actual Client Secret
+DISCORD_API_KEY = os.getenv("DISCORD_API_KEY", "")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+SPOTIPY_CLIENT_ID = os.getenv("SPOTIPY_CLIENT_ID", "")  # Replace with your actual Client ID
+SPOTIPY_CLIENT_SECRET = os.getenv("SPOTIPY_CLIENT_SECRET", "")  # Replace with your actual Client Secret
 
 genai.configure(api_key=GEMINI_API_KEY)
 
